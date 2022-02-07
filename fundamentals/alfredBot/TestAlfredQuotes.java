@@ -1,33 +1,46 @@
+
 // This file will run all my functionality from AlfredQuotes Class
 
+public class TestAlfredQuotes {
 
-
-public class TestAlfredQuotes{
-
-    // main will always be launch point for java application
+    // main will always be launch point for my java applications
     public static void main(String[] args) {
 
-        // creating instance of AlfredQuotes for this file, to access all the information in it 
-
-        //???????????????????????? line 12 in confusing
-        // ??AlfredQuotes variable named alfredBot that is a new instance of AlfredQuotes????  which alfredquotes 
+        // initialized variable named alfredBot that is a new instance of AlfredQuotes
+        // class.
+        // type declaration is AlfredQuotes
         AlfredQuotes alfredBot = new AlfredQuotes();
 
-
         // test greetings
+        // I declare a new String variable called testGreeting and attach the method
+        // basicGreeting imported from AlfredQuotes
         String testGreeting = alfredBot.basicGreeting();
-        // String testGuestGreeting = alfredBot.guestGreeting("Linda Belcher");
-        // String testDateAnnouncement = alfredBot.dateAnnouncement();
-        // String alexisTest = alfredBot.respondBeforeAlexis("Alexis, put me to sleep!");
-        // String nonRelevantTest = alfredBot.respondBeforeAlexis("Maybe that's what Batman is about.  Not winning. But failing..")
 
-        
+        // I delcare a new String variable called testGuestGreeting and attach the
+        // method guestGreeting to alfredBot, my instance of the AlfredQuotes class
+        String testGuestGreeting = alfredBot.guestGreeting("Linda Belcher");
+
+        // I delcare a new String variable called testDateAnnouncement. I attach the
+        // method dateAnnouncement to alfredBot, my instance of the AlfredQuotes class.
+        String testDateAnnouncement = alfredBot.dateAnnouncement();
+
+        // I initialized a new String variable called alexisTest.  I attached the method respondBeforeAlexis to alfredBot, an instance of the AlfredQuotes class
+        // String sentence = "will you clean my room";
+        // int idx = sentence.indexOf("Alexis");
+        // System.out.println(idx);
+        String alexisTest = alfredBot.respondBeforeAlexis("Alfred, put me to sleep!");
+
+
+        // Ninja Bonus
+        String testExcitedSentence = alfredBot.excitedSentence("Where are my pants?");
+
         System.out.println(testGreeting);
-        
-    
+        System.out.println(testGuestGreeting);
+        System.out.println(testDateAnnouncement);
+        System.out.println(alexisTest);
+        System.out.println(testExcitedSentence);
 
-}
 
-
+    }
 
 }
