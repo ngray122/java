@@ -8,21 +8,24 @@ public class Gorilla extends Mammal{
 	
 	
 	
-	public int throwSomething() {
-		System.out.println("The Gorilla just threw a banana! Decreased energy by 5. New energy: " + this.energyLevel);
-		return this.energyLevel -= 5;
+	public void throwSomething() {
+		this.energyLevel -= 5;
+		String.format("The Gorilla just threw a banana! Decreased energy by 5. New energy: " + this.energyLevel);
+	
 		
 	}
 	
-	public int eatBananas() {
+	public void eatBananas() {
+		this.energyLevel += 10;
 		System.out.println("Bananas, yummmmmmm. Increased energy by 10! New energy: " + this.energyLevel);
-		return this.energyLevel += 10;
+	
 		
 	}
 	
-	public int climb() {
+	public void climb() {
+		this.energyLevel -= 10;
 		System.out.println("The Gorilla just climbed a tree. New energy: " + this.energyLevel);
-		return this.energyLevel -= 10;
+
 	}
 	
 	

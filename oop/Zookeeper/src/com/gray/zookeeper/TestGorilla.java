@@ -10,6 +10,7 @@ public class TestGorilla {
 			
 		
 			System.out.println("~ ~ ~ Track Gorilla Energy below ~ ~ ~");
+			g.displayEnergy();
 			g.throwSomething();
 			g.throwSomething();
 			g.throwSomething();
@@ -19,6 +20,7 @@ public class TestGorilla {
 			g.displayEnergy();
 			
 			System.out.println("~ ~ ~ Track Bat Energy below ~ ~ ~");
+			b.displayEnergy();
 			b.fly();
 			b.fly();
 			b.eatHumans();
