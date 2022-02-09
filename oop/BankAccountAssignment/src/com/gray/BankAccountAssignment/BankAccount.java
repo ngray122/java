@@ -13,6 +13,9 @@ public class BankAccount {
 //	creating static class member that tracks the total amount of money stored in every account created
 	public static double totalAmountOfMoneyInAllAccounts =0;
 	
+	public BankAccount() {
+	
+	}
 	
 	
 //	BankAccount Constructor
@@ -25,7 +28,7 @@ public class BankAccount {
 
 //	getter for checkingBalance
 	public double getCheckingBalance() {
-		return checkingBalance;
+		return this.checkingBalance;
 	}
 	
 // 	setter for checkingBalance
@@ -35,7 +38,7 @@ public class BankAccount {
 
 //	getter for savingsBalance
 	public double getSavingsBalance() {
-		return savingsBalance;
+		return this.savingsBalance;
 	}
 	
 //	Setter for savingsBalance
@@ -46,10 +49,9 @@ public class BankAccount {
 
 //	method to allow a user to deposit money into either checkings or savings
 	public void depositToAccount(String account, double amount) {
-		if(account == "checking") {
-			this.setCheckingBalance(amount);
-			
-		}else if (account== "saving"){
+		if(account.equals( "checking")) {
+			this.setCheckingBalance(amount);			
+		}else if (account.equals("saving")){
 			this.setSavingsBalance(amount);
 
 		}
@@ -57,33 +59,26 @@ public class BankAccount {
 	}
 	
 	
-//	Doesn't work :(
+	
 	//method to withdraw money from one account, if insufficient funds, do not allow
 		public void withdrawFromSavings(double amount){
-			double balance = getSavingsBalance();
-			if(balance < amount) {
+			if(this.savingsBalance < amount) {
 				System.out.println("There are not enough funds to make a withdraw");
 			}
 			else {
-				this.setSavingsBalance(amount);
-				totalAmountOfMoneyInAllAccounts -= amount;	
-				
-			
+				this.savingsBalance-=amount;
+					
 			}
 
 		}
 		
 //		method to see total sum of checking and saving
-		public void totalBalances() {
-			double savingsBalance = this.getSavingsBalance();
-			double checkingBalance = this.getCheckingBalance();
-			totalAmountOfMoneyInAllAccounts += savingsBalance +checkingBalance;
+		public double totalBalances() {
+			return this.savingsBalance + this.checkingBalance;
 			
 		}
 		
-		
-		
-		
+			
 		
 	
 }
