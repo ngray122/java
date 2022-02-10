@@ -3,7 +3,7 @@ package com.gray.zookeeper;
 public class Gorilla extends Mammal{
 	
 	Gorilla(){
-		super();
+
 	}
 	
 	

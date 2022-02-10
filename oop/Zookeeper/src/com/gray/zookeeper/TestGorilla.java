@@ -4,7 +4,7 @@ public class TestGorilla {
 
 	public static void main(String[] args) {
 	
-			
+//			instantiate instance of each class
 			Gorilla g= new Gorilla();
 			Bat b= new Bat();
 			

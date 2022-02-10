@@ -2,12 +2,13 @@ package com.gray.zookeeper;
 
 public class Mammal {
 	
+//	set member variable so it can be inherited
 	protected int energyLevel = 100;
 	
 	
 	
 	
-
+//	getters and setters
 	public int getEnergyLevel() {
 		return energyLevel;
 	}

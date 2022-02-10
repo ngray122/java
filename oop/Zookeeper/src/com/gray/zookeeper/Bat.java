@@ -2,9 +2,9 @@ package com.gray.zookeeper;
 
 public class Bat extends Mammal {
 	
-	
+//	Bat will inherit Mammal(parent) attribute methods
 	Bat() {
-		super();
+//		super();  Do I need to inherit super if I set my own default? Works without
 		this.energyLevel = 300;
 		
 	}
@@ -17,6 +17,8 @@ public class Bat extends Mammal {
 	
 	public void eatHumans() {
 		this.energyLevel+=25;
+		System.out.println("Tastes like chicken! Increased energy by 25: " + this.energyLevel);
+
 		
 	}
 	
