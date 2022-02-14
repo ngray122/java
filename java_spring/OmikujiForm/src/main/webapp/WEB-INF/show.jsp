@@ -9,14 +9,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container">
+<div class="container m-3">
 
-    <h1>Here is your Omikuji</h1>
+    
+    <div class="card ">
+        <div class="card-header">
+            <h1>Here is your Omikuji</h1>
+          </div>
+       
+        <h4 class="card-text m-3">In <span><%= session.getAttribute("formNum") %></span> years, you will live in <span><%= session.getAttribute("formCity") %> </span>with <span> <%= session.getAttribute("formName") %></span> as your roommate, <span><%= session.getAttribute("formHobby") %></span>  for a living. The next time you see a  <span><%= session.getAttribute("formThing") %></span>, you will have good luck.  Also,  <span><%= session.getAttribute("formEnterTextArea") %>!</span></h4>
 
-<h3>In <span><%= session.getAttribute("formNum") %></span> years, you will live in <span><%= session.getAttribute("formCity") %> </span>with <span> <%= session.getAttribute("formName") %></span> as your roommate, <span><%= session.getAttribute("formHobby") %></span>  for a living. The next time you see a  <span><%= session.getAttribute("formThing") %></span>, you will have good luck.  Also,  <span><%= session.getAttribute("formEnterTextArea") %>!</span></h3>
+    </div>
 
 
-<button href="/">Home</button>
+
+
+<button type="button" class="btn btn-info m-3"><a href="/">Home</a></button>
 
 </div>
 </body>
