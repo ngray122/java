@@ -13,15 +13,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/name")
-	public String defaultName(@RequestParam(value="first_name", required=false) String first_name) {
-		System.out.println("THis is the value of the param --> " + first_name);
+	public String defaultName(@RequestParam(value="first_name", required=false) String first_name, @RequestParam(value="last_name", required=false) String last_name) {
+		System.out.println("THis is the value of the param --> " + first_name + last_name);
+		System.out.println(last_name);
 		if(first_name ==null) {
 			return "This is the default Greeting!";
 		} else {
-			return "Hi, " + first_name;
+			return String.format("Hi %s, %s", first_name, last_name);
 			
 		}
-		
+	}
 	}
 
-}
+
