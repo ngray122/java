@@ -1,7 +1,5 @@
 package com.gray.savetravels.controllers;
 
-
-
 import java.util.List;
 
 import javax.validation.Valid;
@@ -11,56 +9,77 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.gray.savetravels.models.Expense;
 import com.gray.savetravels.services.ExpenseService;
 
-
-
 @Controller
 public class ExpenseController {
-//	 dependency injection to access the information in service:
-	  private final ExpenseService expenseService;
-	//    
-	    public ExpenseController(ExpenseService expenseService) {
-	        this.expenseService = expenseService;
-	    }
 
-	    // View All
-	    @GetMapping("/expenses")
-	    public String index(Model model) {
-	    	
-	          List<Expense> expenses = this.expenseService.allExpenses();
-	          
-	          model.addAttribute("expenses", expenses);
-	          
+	private final ExpenseService expenseService;
+
+	
+//	 dependency injection to access the information in ExpenseService
+	public ExpenseController(ExpenseService expenseService) {
+		this.expenseService = expenseService;
+	}
+
+	
+	
+	// View All
+	@GetMapping("/expenses")
+	public String index(Model model) {
+
+		List<Expense> expenses = this.expenseService.allExpenses();
+
+		model.addAttribute("expenses", expenses);
+
 //	          passing empty object to form 
-	          model.addAttribute("newExpenses", new Expense());
-	          return "ViewAll.jsp";
-	    }
-	    
-	    
-	    
-        // Submit new book (with data binding and validation with @Valid annotation)
-        @PostMapping("/expenses/create")
-        public String create(@Valid @ModelAttribute("newExpenses") Expense expenses,
-            BindingResult result, Model model) {
-        if(result.hasErrors()) {
-       
-        	 List<Expense>allExpenses = this.expenseService.allExpenses();
-             model.addAttribute("allExpenses", allExpenses);
-        	return "ViewAll.jsp";
-        } else {
-        	 this.expenseService.createExpense(expenses);
-        	return "redirect:/expenses";
-        }
-   
-        }
-	    
-	    
-	    
-	    
+		model.addAttribute("newExpenses", new Expense());
+		return "ViewAll.jsp";
+	}
+
+	// Submit new book (with data binding and validation with @Valid annotation)
+	@PostMapping("/expenses/create")
+	public String create(@Valid @ModelAttribute("newExpenses") Expense expenses, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+
+			List<Expense> allExpenses = this.expenseService.allExpenses();
+			model.addAttribute("allExpenses", allExpenses);
+			return "ViewAll.jsp";
+		} else {
+			this.expenseService.createExpense(expenses);
+			return "redirect:/expenses";
+		}
+
+	}
+
+
+	@GetMapping("/expenses/edit/{id}")
+	public String edit(@PathVariable("id") Long id, Model model) {
+//        	Get info about item using ID in url.  Pre populate form with item information
+
+		Expense expense = this.expenseService.findExpense(id);
+		model.addAttribute("expense", expense);
+		return "Edit.jsp";
+	}
+
+//        // Submit updates
+	@PutMapping("/expenses/update/{id}")
+	public String update(@PathVariable("id") Long id, @Valid @ModelAttribute("expense") Expense expense,
+			BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			return "Edit.jsp";
+		} else {
+			System.out.println();
+			this.expenseService.updateExpense(expense);
+			return "redirect:/expenses";
+		}
+	}
+
 //	    // View One Book
 //	    @GetMapping("/books/{bookId}")
 //	    public String show(Model model, @PathVariable("bookId") Long bookId) {
@@ -108,26 +127,7 @@ public class ExpenseController {
 //	            bookService.createBook(book);
 //	            return "redirect:/books";
 //	        }
-//	        // Edit book page
-//	        @GetMapping("/books/{bookId}/edit")
-//	        public String edit(@PathVariable("bookId") Long bookId, Model model) {
-//	            Book book = bookService.findBook(bookId);
-//	            model.addAttribute("book", book);
-//	            return "edit.jsp";
-//	        }
-//	        // Submit updates
-//	        @PutMapping("/books/{bookId}")
-//	        public String update(
-//	                @PathVariable("bookId") Long bookId,
-//	                @Valid @ModelAttribute("book") Book book, BindingResult result) {
-//	            if (result.hasErrors()) {
-//	                return "edit.jsp";
-//	            } else {
-//	                System.out.println();
-//	                bookService.updateBook(book, bookId);
-//	                return "redirect:/books";
-//	            }
-//	        }
+
 //	        // Delete a book
 //	        @DeleteMapping("/books/{bookId}")
 //	        public String destroy(@PathVariable("bookId") Long bookId) {

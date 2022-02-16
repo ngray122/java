@@ -24,10 +24,11 @@
 <table class="table m-4">
   <h1>Save Travels</h1>
   <thead>
-    <tr class="table border-2">
+    <tr class="table">
       <th scope="col">Expense</th>
       <th scope="col">Vendor</th>
       <th scope="col">Amount</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +37,8 @@
         <td>${expenseObj.name}</td>
         <td>${expenseObj.vendor}</td>
         <td>${expenseObj.amount}</td>
+        <td><a href="/expenses/edit/${expenseObj.id}">edit</a></td>
+        <td><a href="/expenses/edit/${expenseObj.id}">delete</a></td>
       </tr>
 
     </c:forEach>
@@ -63,8 +66,6 @@
     <form:errors path="amount"  class="text-danger"/>
     <form:input path="amount" type="number" step="0.01" class="form-control"/>
   </div>
-
-
   <div class="mb-3">
     <form:label path="description" class="form-label">Description:</form:label>
     <form:errors path="description" class="text-danger"/>
